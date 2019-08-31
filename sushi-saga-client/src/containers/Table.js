@@ -8,11 +8,14 @@ const Table = (props) => {
     })
   }
 
+  
+
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        You have: ${100 - props.moneySpent } remaining!
       </h1>
+      <button onClick={props.makeMoney}>Work in the kitchen</button>
       <div className="table">
         <div className="stack">
           {
@@ -21,7 +24,7 @@ const Table = (props) => {
                and renders an empty plate
                for every element in the array
             */
-            renderPlates([])
+            renderPlates(props.eatenSushi)
           }
         </div>
       </div>
