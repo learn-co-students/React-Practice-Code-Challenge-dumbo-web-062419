@@ -1,20 +1,28 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+// import React, { useState } from 'react'
 
 const Sushi = (props) => {
+
+  const [eaten, eatSushi] = useState(false)
+  
+  function handleClick(){
+    props.eatSushi(props.sushi)
+  }
+
   return (
-    <div className="sushi">
+    <div className="sushi" onClick={handleClick}>
       <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
+           onClick={() => eatSushi(true)} >
         { 
-          /* Tell me if this sushi has been eaten! */ 
-          true ?
+          eaten
+           ?
             null
           :
-            <img src={/* Give me an image source! */} width="100%" />
+            <img src={props.sushi.img_url} width="100%" />
         }
       </div>
-      <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+      <h4 className="sushi-details" >
+        {props.sushi.name} - ${props.sushi.price}
       </h4>
     </div>
   )
