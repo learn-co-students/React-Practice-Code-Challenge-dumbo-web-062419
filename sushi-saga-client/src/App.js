@@ -14,16 +14,16 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(API).then(res => res.json()).then(sushis => this.setState({ sushis }))
+    fetch(API).then(res => res.json()).then(sushis => this.setState({ sushis: sushis }))
   }
 
 
   handleEatSushi = (sushi) => {
-    const removedSushi = this.state.sushis.filter(function(ele){
-      return ele !== sushi
-    })
+    // const removedSushi = this.state.sushis.filter(function(ele){
+    //   return ele !== sushi
+    // })
     this.setState({
-      sushis: removedSushi,
+      // sushis: removedSushi,
       eatenSushi: [...this.state.eatenSushi, sushi],
       moneySpent: this.state.moneySpent +sushi.price
     })
